@@ -1,0 +1,37 @@
+{
+    "template_1" : {
+        "name" : "example",
+        "version" : "1.0",
+        "header_map" : {
+            "source_header1": "destion_header1",
+            "source_header2": "destion_header2",
+            "source_header3": "destion_header3",
+            "source_header4": "destion_header4",
+            "source_header5": "destion_header5"
+        },
+        
+        "post_processes" : [
+            {"name": "strip_illegal_chars", "id" : 1, "args" : {"length" : 3}},
+            {"name": "lowercase", "id" : 2, "args" : {}}
+        ]
+    },
+
+    "basic_test" : {
+        "name" : "basic_test",
+        "version" : "1.0",
+        "header_map" : {
+            "album_name": "ALBUM: Title",
+            "track_title": "TRACK: Title",
+            "track_description": "TRACK: Description",
+            "bpm": "TRACK: BPM",
+            "composer_name": "COMPOSER: Name",
+            "ISRC": "CODE: ISRC"
+        },
+        
+        "post_processes" : [
+            {"name": "strip_illegal_chars", "id" : 1, "args" : {"headers" : ["TRACK: Description", "TRACK: BPM"]}},
+            {"name": "lowercase", "id" : 2, "args" : {"headers" : ["CODE: ISRC"]}}
+        ]
+    }
+
+}
