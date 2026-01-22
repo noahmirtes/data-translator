@@ -6,7 +6,7 @@ from post_process import copy_by_header, run_post_processes
 
 # ------------------------------------------ #
 
-def main(input_path : str, output_path : str, template_path : str, template_name : str):
+def main(input_path : str, output_folder : str, template_path : str, template_name : str):
 
     # load the data template
     DATA_TEMPLATE = extract_template_structure(template_path, template_name)
@@ -22,17 +22,24 @@ def main(input_path : str, output_path : str, template_path : str, template_name
         header_map=DATA_TEMPLATE.header_map
     )
     
+    # run the post processing
     output_df = run_post_processes(
         df=output_df,
         transforms=DATA_TEMPLATE.post_processes
     )
 
+    # construct the output path
+    output_path = construct_output_filename(
+        input_path=input_path,
+        output_folder=output_folder,
+        template_name=template_name
+    )
+
+    # export the data
     export_data(
         output_path=output_path,
         df=output_df
     )
-
-    construct_output_filename(input_path)
 
 
 # ------------------------------------------ #

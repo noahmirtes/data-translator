@@ -41,8 +41,15 @@ def construct_output_df(headers : list[str]):
     return pd.DataFrame(columns=headers)
 
 
-def construct_output_filename(input_path : str):
-    print(os.path.splitext(input_path))
+def construct_output_filename(input_path : str, output_folder : str, template_name : str):
+    """
+    Create the output filename and path with the input basename and the output template name.
+    Preserves the sheet format of the input data.
+    """
+
+    ext = os.path.splitext(input_path)[-1]
+    basename = os.path.basename(input_path)
+    return os.path.join(output_folder, f"{basename} -- {template_name}{ext}")
 
 # ------------------------------------------ #
 # Data tools
