@@ -1,4 +1,4 @@
-# data_transforms.py
+# post_process.py
 
 import pandas as pd
 from utils import split_tag_list
@@ -14,11 +14,11 @@ def copy_by_header(src_df : pd.DataFrame, dest_df : pd.DataFrame, header_map : d
         header_map : the dictionary for the header mapping (source header : dest header)
     """
 
-    for src_header, dest_header in header_map.items():
+    for dest_header, src_header in header_map.items():
         try:
             dest_df[dest_header] = src_df[src_header]
         except Exception:
-            print(f"Error mapping {src_df} to {dest_header}")
+            print(f"Error mapping {src_header} to {dest_header}")
 
     return dest_df
 
@@ -184,7 +184,7 @@ def set_cd_id(df, cd_id_header):
 
 # OTHER CLEANLINESS TRANSFORMS
 
-def strip_illegal_chars(df, strip_header):
+def strip_illegal_chars(df, headers : list[str]):
     """
     Remove illegal characters from the values in src_header.
     Writes cleaned value to dest_header (or back into src_header if dest_header is None).
@@ -206,7 +206,8 @@ def strip_illegal_chars(df, strip_header):
             s = s.replace(ch, "")
         return s.strip()
 
-    df[strip_header] = df[strip_header].apply(_clean)
+    for h in headers:
+        df[h] = df[h].apply(_clean)
     return df
 
 

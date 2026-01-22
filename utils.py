@@ -40,11 +40,15 @@ def construct_output_df(headers : list[str]):
     """
     return pd.DataFrame(columns=headers)
 
+
+def construct_output_filename(input_path : str):
+    print(os.path.splitext(input_path))
+
 # ------------------------------------------ #
 # Data tools
 
 def split_tag_list(raw, delimiter=';'):
-    """Split a cell into a list of tags. Always assumes semicolon delimiter"""
+    """Split a cell into a list of tags."""
     
     if pd.isna(raw):
         return []
