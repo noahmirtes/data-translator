@@ -47,7 +47,7 @@ def main(input_path : str, output_folder : str, template_path : str, template_na
 if __name__ == "__main__":
     main(
         input_path="/Users/noah/REPOS/basic-data-translator/examples/input/harvest_input.xlsx",
-        output_path="/Users/noah/REPOS/basic-data-translator/examples/output/output_data.xlsx",
+        output_path="/Users/noah/REPOS/basic-data-translator/examples/output/",
         template_path="/Users/noah/REPOS/basic-data-translator/TEMPLATES.json",
         template_name="harvest_to_sourceaudio"
     )
