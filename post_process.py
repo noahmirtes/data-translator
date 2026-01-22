@@ -52,17 +52,6 @@ def run_post_processes(df, transforms):
 
 # ------------------------------------------------------------- POST PROCESS -----
 
-"""
-The real world is messy and therefore, the transform functions need flexibility and robustness in order to handle
-many different approaches to data post processing. Modularity is absolutely key here!
-
-Because of this, each transform function follows the same structure:
-A function with a nested 'value level' function and the header specific .apply() on the dataframe
-
-This structures allows for maximum flexibility for whatever transform needs to be added.
-Below are some functions that I've used in the past on album data translation. You can see the messiness emerge and see
-how a 'lived in' feeling for this codebase can form quickly.
-"""
 
 def strip_illegal_chars(df : pd.DataFrame, headers : str):
     """
@@ -163,6 +152,7 @@ def set_library_id(df, library_id_header, cd_id_header):
 def set_cd_id(df, cd_id_header):
     """
     Takes values like "AMH 032" or "AMH032" and outputs "AMH-0032".
+    Specific to a particular labels input/output format
     """
     def _row(raw):
         if pd.isna(raw):
@@ -225,9 +215,9 @@ def strip_illegal_chars(df, strip_header):
 
 def filter_instruments(
     df,
-    version_header,        # e.g., "Version" or "Track Title"
-    instruments_header,    # e.g., "Instruments"
-    trigger_rules=None,    # list[(list[str] triggers, list[str] removals)]
+    version_header,   # e.g., "Version" or "Track Title"
+    instruments_header, # e.g., "Instruments"
+    trigger_rules=None,   # list[(list[str] triggers, list[str] removals)]
     require_no_token=" No ",
     exclude_lead_token=" Lead ",
 ):
@@ -282,7 +272,7 @@ def pad_tags(df, check_headers, map_config):
 
     map_config = [
         (target_header, dictionary_or_iterable_of_valid_tags),
-        ...
+        . . . 
     ]
 
     Rules:

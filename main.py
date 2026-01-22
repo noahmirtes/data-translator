@@ -2,7 +2,7 @@
 
 from templates import extract_template_structure
 from utils import read_excel_sheet, export_data, construct_output_df
-from data_transforms import copy_by_header, run_post_processes
+from post_process import copy_by_header, run_post_processes
 
 # ------------------------------------------ #
 
@@ -31,7 +31,6 @@ def main(input_path, output_path, template_path, template_name):
         output_path=output_path,
         df=output_df
     )
-    print(output_df.head())
 
 
 # ------------------------------------------ #
