@@ -3,16 +3,16 @@
         "name" : "example",
         "version" : "1.0",
         "header_map" : {
-            "source_header1": "destion_header1",
-            "source_header2": "destion_header2",
-            "source_header3": "destion_header3",
-            "source_header4": "destion_header4",
-            "source_header5": "destion_header5"
+            "destion_header1": "source_header1",
+            "destion_header2": "source_header2",
+            "destion_header3": "source_header3",
+            "destion_header4": "source_header4",
+            "destion_header5": "source_header5"
         },
         
         "post_processes" : [
-            {"name": "strip_illegal_chars", "id" : 1, "args" : {"length" : 3}},
-            {"name": "lowercase", "id" : 2, "args" : {}}
+            {"name": "name_of_transform_function", "id" : 1, "args" : {"arg_from_transform_id_1" : 3}},
+            {"name": "lowercase", "id" : 2, "args" : {"headers" : ["Title"]}}
         ]
     },
 
@@ -32,6 +32,72 @@
             {"name": "strip_illegal_chars", "id" : 1, "args" : {"headers" : ["TRACK: Description", "TRACK: BPM"]}},
             {"name": "lowercase", "id" : 2, "args" : {"headers" : ["CODE: ISRC"]}}
         ]
+    },
+
+    
+    
+    "harvest_to_sourceaudio" : {
+        "name" : "harvest_to_sourceaudio",
+        "version" : "1.0",
+        "header_map" : {
+            "Title" : "TRACK: Title",
+            "Version" : "TRACK: Version",
+            "Filename" : "TRACK: Audio Filename",
+            "Catalog" : "LIBRARY: Name",
+            "Label" : "LIBRARY: Name",
+            "Album" : "ALBUM: Title",
+            "Album Code" : "ALBUM: Code",
+            "Track Number" : "TRACK: Number",
+            "Album Description" : "ALBUM: Description",
+            "Album Release Date" : "ALBUM: Release Date",
+            "Album Genre" : "ALBUM: Styles",
+            "BPM" : "TRACK: BPM",
+            "Tempo" : "TRACK: Tempo",
+            "Key" : "TRACK: Key",
+            "Length" : "TRACK: Duration",
+            "Genre" : "TRACK: Genre",
+            "Description" : "TRACK: Description",
+            "Keywords" : "TRACK: Keywords",
+            "Moods" : "TRACK: Mood",
+            "Instruments" : "TRACK: Instrumentation",
+            "Lyrics" : "TRACK: Lyrics",
+            "Publisher 1 Company" : "PUBLISHER:1: Name",
+            "Publisher 1 Pro Affiliation" : "PUBLISHER:1: Society",
+            "Publisher 1 CAE/IPI" : "PUBLISHER:1: IPI",
+            "Publisher 1 Ownership Share" : "PUBLISHER:1: Owner Performance Share %",
+            "Publisher 1 Role" : "PUBLISHER:1: Capacity",
+            "Publisher 2 Company" : "PUBLISHER:2: Name",
+            "Publisher 2 Pro Affiliation" : "PUBLISHER:2: Society",
+            "Publisher 2 CAE/IPI" : "PUBLISHER:2: IPI",
+            "Publisher 2 Ownership Share" : "PUBLISHER:2: Owner Performance Share %",
+            "Publisher 2 Role" : "PUBLISHER:2: Capacity",
+            "Writer 1 First Name" : "WRITER:1: First Name",
+            "Writer 1 Last Name" : "WRITER:1: Last Name",
+            "Writer 1 Pro Affiliation" : "WRITER:1: Society",
+            "Writer 1 CAE/IPI" : "WRITER:1: IPI",
+            "Writer 1 Ownership Share" : "WRITER:1: Owner Performance Share %",
+            "Writer 1 Publishing Interest" : "WRITER:1: Owner Performance Share %",
+            "Writer 1 Role" : "WRITER:1: Capacity",
+            "Writer 2 First Name" : "WRITER:2: First Name",
+            "Writer 2 Last Name" : "WRITER:2: Last Name",
+            "Writer 2 Pro Affiliation" : "WRITER:2: Society",
+            "Writer 2 CAE/IPI" : "WRITER:2: IPI",
+            "Writer 2 Ownership Share" : "WRITER:2: Owner Performance Share %",
+            "Writer 2 Publishing Interest" : "WRITER:2: Owner Performance Share %",
+            "Writer 2 Role" : "WRITER:2: Capacity",
+            "ISRC" : "CODE: ISRC",
+            "ISWC" : "CODE: ISWC"
+        },
+        
+        "post_processes" : [
+            {"name": "strip_illegal_chars", "id" : 1, "args" : {"headers" : ["Description", "Filename"]}},
+            {"name": "lowercase", "id" : 2, "args" : {"headers" : ["ISRC"]}}
+        ]
     }
+
+
+
+
+
 
 }
