@@ -11,12 +11,12 @@ class DataTemplate:
     header_map : list[str, str]
     post_processes : list
 
-def load_json(template_path):
+def load_json(template_path : str):
     with open(template_path, 'r') as f:
         return json.load(f)
 
-def extract_template_structure(template_path, template_name) -> DataTemplate:
-    """Load the template specific structure from a json file"""
+def extract_template_structure(template_path : str, template_name : str) -> DataTemplate:
+    """Load the template structure from a json file"""
     all_templates = load_json(template_path)
     raw_template = all_templates[template_name]
 
